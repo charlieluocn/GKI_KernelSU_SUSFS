@@ -993,6 +993,11 @@ jobs:
           enable_config_if_defined CONFIG_VXLAN
           enable_config_if_defined CONFIG_BRIDGE_VLAN_FILTERING
 
+          # nftables (现代 Docker/iptables-nft) + fail2ban 扩展 ipset 类型 (kABI 安全)
+          enable_config_if_defined CONFIG_NF_TABLES
+          enable_config_if_defined CONFIG_IP_SET_HASH_NETPORT
+          enable_config_if_defined CONFIG_IP_SET_HASH_NETIFACE
+
           echo "Droidspaces 集成完成"
 
           echo "GKI6.6 普通用户联网专用配置 (Droidspaces)"
