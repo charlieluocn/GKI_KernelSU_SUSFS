@@ -1,3 +1,7 @@
 # Unified patch payloads intentionally preserve space-prefixed blank context
 # lines and kernel-style tab indentation.
 security_patch/*.patch -whitespace
+
+# GitHub Actions workflow files must stay LF
+*.yml text eol=lf
+*.yaml text eol=lf
