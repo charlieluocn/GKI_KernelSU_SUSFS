@@ -1006,6 +1006,13 @@ jobs:
           enable_config_if_defined CONFIG_IP_SET_HASH_NETPORT
           enable_config_if_defined CONFIG_IP_SET_HASH_NETIFACE
 
+          # IPVS (L4 负载均衡, K8s kube-proxy ipvs 模式) - kABI 安全
+          enable_config_if_defined CONFIG_IP_VS
+          enable_config_if_defined CONFIG_IP_VS_NFCT
+          enable_config_if_defined CONFIG_IP_VS_PROTO_TCP
+          enable_config_if_defined CONFIG_IP_VS_PROTO_UDP
+          enable_config_if_defined CONFIG_IP_VS_RR
+
           echo "Droidspaces 集成完成"
 
           echo "GKI6.6 普通用户联网专用配置 (Droidspaces)"
