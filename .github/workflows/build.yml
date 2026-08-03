@@ -1013,12 +1013,6 @@ jobs:
           enable_config_if_defined CONFIG_IP_VS_PROTO_UDP
           enable_config_if_defined CONFIG_IP_VS_RR
 
-          # cgroup 增强 (vendor 驱动不依赖, kABI 安全)
-          enable_config_if_defined CONFIG_CGROUP_PIDS
-          enable_config_if_defined CONFIG_CGROUP_PERF
-          enable_config_if_defined CONFIG_CGROUP_HUGETLB
-          enable_config_if_defined CONFIG_NET_CLS_CGROUP
-
           echo "Droidspaces 集成完成"
 
           echo "GKI6.6 普通用户联网专用配置 (Droidspaces)"
