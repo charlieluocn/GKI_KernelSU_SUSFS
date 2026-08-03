@@ -1012,6 +1012,7 @@ jobs:
           enable_config_if_defined CONFIG_IP_VS_PROTO_TCP
           enable_config_if_defined CONFIG_IP_VS_PROTO_UDP
           enable_config_if_defined CONFIG_IP_VS_RR
+          enable_config_if_defined CONFIG_NETFILTER_XT_MATCH_IPVS
 
           echo "Droidspaces 集成完成"
 
