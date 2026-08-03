@@ -1017,6 +1017,11 @@ jobs:
           enable_config_if_defined CONFIG_IP_VS_RR
           enable_config_if_defined CONFIG_NETFILTER_XT_MATCH_IPVS
 
+          # 存储驱动 (纯新增代码, kABI 安全; ZFS 是 out-of-tree 模块不在内核)
+          enable_config_if_defined CONFIG_BTRFS_FS
+          enable_config_if_defined CONFIG_BTRFS_FS_POSIX_ACL
+          enable_config_if_defined CONFIG_DM_THIN_PROVISIONING
+
           echo "Droidspaces 集成完成"
 
           echo "GKI6.6 普通用户联网专用配置 (Droidspaces)"
