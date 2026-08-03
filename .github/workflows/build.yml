@@ -1003,6 +1003,9 @@ jobs:
 
           # nftables (现代 Docker/iptables-nft) + fail2ban 扩展 ipset 类型 (kABI 安全)
           enable_config_if_defined CONFIG_NF_TABLES
+          enable_config_if_defined CONFIG_NF_TABLES_INET
+          enable_config_if_defined CONFIG_NF_TABLES_IPV4
+          enable_config_if_defined CONFIG_NF_TABLES_IPV6
           enable_config_if_defined CONFIG_IP_SET_HASH_NETPORT
           enable_config_if_defined CONFIG_IP_SET_HASH_NETIFACE
 
