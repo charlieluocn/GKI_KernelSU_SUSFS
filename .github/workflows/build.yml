@@ -1022,6 +1022,9 @@ jobs:
           enable_config_if_defined CONFIG_BTRFS_FS_POSIX_ACL
           enable_config_if_defined CONFIG_DM_THIN_PROVISIONING
 
+          # LXC lxc-net 需要 (DHCP checksum 修复规则; kABI 安全)
+          enable_config_if_defined CONFIG_NETFILTER_XT_TARGET_CHECKSUM
+
           echo "Droidspaces 集成完成"
 
           echo "GKI6.6 普通用户联网专用配置 (Droidspaces)"
