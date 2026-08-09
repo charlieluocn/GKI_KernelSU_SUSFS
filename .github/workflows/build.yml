@@ -1316,6 +1316,16 @@ jobs:
 
           sed -i 's/check_defconfig//' ./common/build.config.gki
 
+      - name: 添加 BBR v1 拥塞控制
+        run: |
+          # BBR v1: Linux 5.4+ mainline 默认算法, 改善 mihomo/proxy 出口 + 出网吞吐
+          # 不破坏 DroidSpaces/K60; kABI 安全 (纯新增, 不改 ABI)
+          cat >> "$DEFCONFIG" << 'EOF'
+          CONFIG_TCP_CONG_ADVANCED=y
+          CONFIG_TCP_CONG_BBR=y
+          CONFIG_DEFAULT_BBR=y
+          EOF
+
       - name: 添加 SUSFS 配置
         if: inputs.enable_susfs
         run: |
