@@ -732,6 +732,38 @@ jobs:
           enable_config_if_defined CONFIG_IP_VS_PROTO_UDP
           enable_config_if_defined CONFIG_IP_VS_RR
           enable_config_if_defined CONFIG_NETFILTER_XT_MATCH_IPVS
+          # 标准 Linux 常用补充 (全部 kABI 安全, 不影响系统运行; Kconfig 不存在自动跳过)
+          # -- 文件系统 --
+          enable_config_if_defined CONFIG_XFS_FS
+          enable_config_if_defined CONFIG_XFS_POSIX_ACL
+          enable_config_if_defined CONFIG_XFS_SECURITY
+          enable_config_if_defined CONFIG_NFS_FS
+          enable_config_if_defined CONFIG_NFS_V2
+          enable_config_if_defined CONFIG_NFS_V3
+          enable_config_if_defined CONFIG_NFS_V4
+          enable_config_if_defined CONFIG_NFS_V4_1
+          enable_config_if_defined CONFIG_NFS_V4_2
+          enable_config_if_defined CONFIG_CEPH_FS
+          enable_config_if_defined CONFIG_CIFS
+          enable_config_if_defined CONFIG_FSCACHE
+          enable_config_if_defined CONFIG_CACHEFILES
+          # -- 网络 (netfilter conntrack 超时 + tc action + 网络console) --
+          enable_config_if_defined CONFIG_NF_CONNTRACK_TIMEOUT
+          enable_config_if_defined CONFIG_NET_ACT_GACT
+          enable_config_if_defined CONFIG_NET_ACT_MIRRED
+          enable_config_if_defined CONFIG_NET_ACT_SKBEDIT
+          enable_config_if_defined CONFIG_NET_ACT_CSUM
+          enable_config_if_defined CONFIG_NET_ACT_POLICE
+          enable_config_if_defined CONFIG_NET_ACT_VLAN
+          enable_config_if_defined CONFIG_NETCONSOLE
+          enable_config_if_defined CONFIG_NETCONSOLE_DYNAMIC
+          # -- 块设备 --
+          enable_config_if_defined CONFIG_BLK_DEV_NBD
+          # -- 其他 (调试/容器) --
+          enable_config_if_defined CONFIG_IKCONFIG
+          enable_config_if_defined CONFIG_IKCONFIG_PROC
+          enable_config_if_defined CONFIG_TMPFS_XATTR
+          enable_config_if_defined CONFIG_SQUASHFS
 
           # 存储驱动 (纯新增代码, kABI 安全; ZFS 是 out-of-tree 模块不在内核)
           enable_config_if_defined CONFIG_BTRFS_FS
