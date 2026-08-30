@@ -691,6 +691,14 @@ jobs:
           enable_config_if_defined CONFIG_NF_TABLES_INET
           enable_config_if_defined CONFIG_NF_TABLES_IPV4
           enable_config_if_defined CONFIG_NF_TABLES_IPV6
+          # nftables 核心表达式 (lxc-net/Docker nft NAT 必需, kABI 安全)
+          enable_config_if_defined CONFIG_NFT_COUNTER
+          enable_config_if_defined CONFIG_NFT_NAT
+          enable_config_if_defined CONFIG_NFT_MASQ
+          enable_config_if_defined CONFIG_NFT_CT
+          enable_config_if_defined CONFIG_NFT_LOG
+          enable_config_if_defined CONFIG_NFT_LIMIT
+          enable_config_if_defined CONFIG_NFT_REJECT
           enable_config_if_defined CONFIG_IP_SET_HASH_NETPORT
           enable_config_if_defined CONFIG_IP_SET_HASH_NETIFACE
 
