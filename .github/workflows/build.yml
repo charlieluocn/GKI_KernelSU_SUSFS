@@ -417,8 +417,12 @@ jobs:
           variant_input="${{ inputs.ksu_variant }}"
 
           case "$variant_input" in
-            "Official"|"ReSukiSU")
+            "Official")
               BRANCH="-s main"
+              ;;
+            "ReSukiSU")
+              # pin 到稳定版(run#4 8-05)使用的 ReSukiSU commit f7be4a53bd, 避免 kernel 源漂移引入 SELinux/init 崩溃
+              BRANCH="-s f7be4a53bd"
               ;;
             "SukiSU")
               if [ "${{ inputs.enable_susfs }}" = "false" ]; then
