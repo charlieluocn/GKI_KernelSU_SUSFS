@@ -277,6 +277,12 @@ jobs:
             fi
           fi
 
+          # Hermes pin: 固定 SUSFS4KSU 到稳定版(8-05) commit ccb1918684b2, 避免 8-05 后漂移
+          if [ "${{ inputs.ksu_variant }}" == "ReSukiSU" ] || [ "${{ inputs.ksu_variant }}" == "Official" ]; then
+            echo "Hermes pin SUSFS4KSU -> ccb1918684b2 (稳定版/8-05)"
+            git -C susfs4ksu checkout ccb1918684b2
+          fi
+
           SUSFS_LATEST_COMMIT_DATE=$(git -C susfs4ksu log -1 --date=format:'%Y-%m-%d %H:%M:%S %z' --format='%cd')
           echo "SUSFS_LATEST_COMMIT_DATE=$SUSFS_LATEST_COMMIT_DATE" >> $GITHUB_ENV
           echo "SUSFS 仓库最新提交日期: $SUSFS_LATEST_COMMIT_DATE"
@@ -284,6 +290,9 @@ jobs:
           echo "准备补丁资源..."
           git clone https://github.com/WildKernels/kernel_patches.git
           git clone https://github.com/ShirkNeko/SukiSU_patch.git
+          # Hermes pin: 固定 kernel_patches/SukiSU_patch 到稳定版(8-05)版本, 避免漂移
+          git -C kernel_patches checkout 920fab8a 2>/dev/null && echo "Hermes pin kernel_patches -> 920fab8a (稳定版/8-05)"
+          git -C SukiSU_patch checkout 547ae94b 2>/dev/null && echo "Hermes pin SukiSU_patch -> 547ae94b (稳定版/8-05)"
           echo "使用当前仓库补丁目录: $ZZH_PATCHES"
           git clone https://github.com/Numbersf/Action-Build.git --depth=1
 
@@ -406,8 +415,12 @@ jobs:
           variant_input="${{ inputs.ksu_variant }}"
 
           case "$variant_input" in
-            "Official"|"ReSukiSU")
+            "Official")
               BRANCH="-s main"
+              ;;
+            "ReSukiSU")
+              # Hermes pin: ReRukiSU 固定到稳定版(8-05) commit f7be4a53bd
+              BRANCH="-s f7be4a53bd"
               ;;
             "SukiSU")
               if [ "${{ inputs.enable_susfs }}" = "false" ]; then
