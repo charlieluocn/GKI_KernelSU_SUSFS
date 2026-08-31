@@ -294,6 +294,9 @@ jobs:
 
           echo "准备补丁资源..."
           git clone https://github.com/WildKernels/kernel_patches.git
+          # Hermes pin: 固定 kernel_patches 到稳定版(8-05 run#4 507e824)使用的 920fab8a,
+          # 排除 8-05 后新增补丁(如 __fold_filemap_fixup_entry backport)导致的崩溃
+          git -C kernel_patches checkout 920fab8a
           git clone https://github.com/ShirkNeko/SukiSU_patch.git
           echo "使用当前仓库补丁目录: $ZZH_PATCHES"
           git clone https://github.com/Numbersf/Action-Build.git --depth=1
