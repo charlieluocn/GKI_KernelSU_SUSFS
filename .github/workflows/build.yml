@@ -997,6 +997,10 @@ jobs:
           enable_config_if_defined CONFIG_BTRFS_FS
           enable_config_if_defined CONFIG_BTRFS_FS_POSIX_ACL
           enable_config_if_defined CONFIG_DM_THIN_PROVISIONING
+          # Phase2(sto4): XFS 文件系统 (Docker/大数据存储, kABI 安全) - 增量编译
+          enable_config_if_defined CONFIG_XFS_FS
+          enable_config_if_defined CONFIG_XFS_POSIX_ACL
+          enable_config_if_defined CONFIG_XFS_SECURITY
 
           # LXC lxc-net 需要 (DHCP checksum 修复规则; kABI 安全)
 
