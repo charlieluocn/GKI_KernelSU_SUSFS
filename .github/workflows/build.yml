@@ -957,6 +957,8 @@ jobs:
           # REJECT 目标在不同内核版本上的符号名可能不同，按实际存在的配置启用
           enable_config_if_defined CONFIG_NETFILTER_XT_TARGET_REJECT
           enable_config_if_defined CONFIG_IP_NF_TARGET_REJECT
+          # Phase3(sto5): CHECKSUM target (lxc-net DHCP checksum 补丁, legacy iptables 模式需要) - 增量
+          enable_config_if_defined CONFIG_NETFILTER_XT_TARGET_CHECKSUM
 
           # Docker 网络增强 (安全选项)
           enable_config_if_defined CONFIG_BRIDGE_NETFILTER
