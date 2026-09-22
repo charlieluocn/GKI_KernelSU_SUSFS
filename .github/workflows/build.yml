@@ -997,6 +997,15 @@ jobs:
           enable_config_if_defined CONFIG_IP_VS_PROTO_UDP
           enable_config_if_defined CONFIG_IP_VS_RR
           enable_config_if_defined CONFIG_NETFILTER_XT_MATCH_IPVS
+          # Phase7(sto7): tc/QoS + 网络控制台 (NET_ACT_*/NETCONSOLE, kABI 安全) - 合并批2
+          enable_config_if_defined CONFIG_NET_ACT_GACT
+          enable_config_if_defined CONFIG_NET_ACT_SKBEDIT
+          enable_config_if_defined CONFIG_NET_ACT_CSUM
+          enable_config_if_defined CONFIG_NET_ACT_POLICE
+          enable_config_if_defined CONFIG_NET_ACT_MIRRED
+          enable_config_if_defined CONFIG_NET_ACT_VLAN
+          enable_config_if_defined CONFIG_NETCONSOLE
+          enable_config_if_defined CONFIG_NETCONSOLE_DYNAMIC
           # 标准 Linux 常用补充 (全部 kABI 安全, 不影响系统运行; Kconfig 不存在自动跳过)
           # -- 文件系统 --
           # -- 网络 (netfilter conntrack 超时 + tc action + 网络console) --
@@ -1023,6 +1032,12 @@ jobs:
           enable_config_if_defined CONFIG_TMPFS_XATTR
           enable_config_if_defined CONFIG_IKCONFIG
           enable_config_if_defined CONFIG_IKCONFIG_PROC
+          # Phase8(sto7): 网络/分布式存储 + 块设备 (CEPH/CIFS/FSCACHE/NBD, kABI 安全) - 合并批2
+          enable_config_if_defined CONFIG_CEPH_FS
+          enable_config_if_defined CONFIG_CIFS
+          enable_config_if_defined CONFIG_FSCACHE
+          enable_config_if_defined CONFIG_CACHEFILES
+          enable_config_if_defined CONFIG_BLK_DEV_NBD
 
           # LXC lxc-net 需要 (DHCP checksum 修复规则; kABI 安全)
 
