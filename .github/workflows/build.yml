@@ -1027,6 +1027,9 @@ jobs:
           enable_config_if_defined CONFIG_CIFS
           enable_config_if_defined CONFIG_FSCACHE
           enable_config_if_defined CONFIG_CACHEFILES
+          # Phase11(sto10): CIFS_FSCACHE (CIFS 本地闪存缓存加速, fsc 挂载选项) + BLK_DEV_NBD (网络块设备, 远程 .img 挂载) - 小步增量
+          enable_config_if_defined CONFIG_CIFS_FSCACHE
+          enable_config_if_defined CONFIG_BLK_DEV_NBD
 
           # LXC lxc-net 需要 (DHCP checksum 修复规则; kABI 安全)
 
