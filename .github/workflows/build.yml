@@ -1385,6 +1385,33 @@ jobs:
             echo "已导出 SUSFS 配置片段: $(wc -l < "$GITHUB_WORKSPACE/susfs-patch/susfs.config") 行"
           fi
 
+      - name: 集成 NetHunter WiFi 注入支持 (KMI-safe)
+        run: |
+          echo "追加 NetHunter fragment 到 $DEFCONFIG"
+          cat >> "$DEFCONFIG" << 'EOF'
+          CONFIG_MODULE_SIG=n
+          CONFIG_CFG80211=m
+          CONFIG_MAC80211=m
+          CONFIG_MAC80211_MESH=y
+          CONFIG_RTL8XXXU=m
+          CONFIG_RTL8XXXU_UNTESTED=y
+          CONFIG_RT2800USB=m
+          CONFIG_RT2800USB_RT53XX=y
+          CONFIG_RT2800USB_UNKNOWN=y
+          CONFIG_MT76_USB=m
+          CONFIG_MT76x2_COMMON=m
+          CONFIG_MT76x2U=m
+          CONFIG_MT76x0_COMMON=m
+          CONFIG_MT76x0U=m
+          CONFIG_MT7921U=m
+          CONFIG_ATH9K_HTC=m
+          CONFIG_CARL9170=m
+          CONFIG_RTL8187=m
+          CONFIG_FW_LOADER_USER_HELPER=y
+          CONFIG_CFG80211_REQUIRE_SIGNED_REGDB=n
+          EOF
+          echo "NetHunter fragment 已应用"
+
       - name: 配置内核名称
         working-directory: ${{ env.KERNEL_ROOT }}
         run: |
